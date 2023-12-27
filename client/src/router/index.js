@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Books from '../components/Books.vue'
+import Generator from '../components/Generator.vue'
 import Ping from '../components/Ping.vue'
 
 const router = createRouter({
@@ -7,8 +7,8 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'Books',
-      component: Books,
+      name: 'generator',
+      component: Generator,
     },
     {
       path: '/ping',
