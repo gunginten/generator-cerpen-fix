@@ -22,7 +22,10 @@
           <input type="text" v-model="inputText" class="form-control" placeholder="Masukkan Judul">
         </div>
         <div class="form-group py-2">
-          <button @click="loadData" class="btn btn-primary">Generate</button>
+          <button @click="loadData" class="btn btn-primary" :disabled="loading">Generate</button>
+          <div v-if="loading">
+            <!-- spinner -->
+          </div>
         </div>
         <div class="form-group">
           <textarea class="form-control" v-model="outputText" disabled placeholder="Hasil"></textarea>
@@ -39,13 +42,15 @@ export default {
     return {
       inputText: '',
       outputText: '',
+      loading: false
     };
   },
   methods: {
     loadData() {
       console.log(this.inputText );
       // Assuming you want to send the inputText as data
-      ###url seach param
+      // url seach param
+      this.loading = true
       axios.post('http://127.0.0.1:5000/generate-story', { inputText: this.inputText }, {
           headers: {
             'Content-Type': 'application/json',
@@ -54,9 +59,11 @@ export default {
         .then((res) => {
           console.log(this.inputText );
           this.outputText = res.data.story;
+          this.loading = false
         })
         .catch((error) => {
           console.error('Error:', error);
+          this.loading = false
         });
     },
   },

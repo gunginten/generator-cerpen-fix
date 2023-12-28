@@ -26,6 +26,7 @@ def generate_story_endpoint():
     # Ambil cerpen dari model dan kirim ke frontend
     # Get JSON data from the request body
     inputText = request.json.get('inputText')
+    # print(inputText)
     story = generate_story(inputText)
     return jsonify({'story': story})
     # try:
