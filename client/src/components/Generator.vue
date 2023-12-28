@@ -23,11 +23,14 @@
         </div>
         <div class="form-group py-2">
           <button @click="loadData" class="btn btn-primary" :disabled="loading">Generate</button>
-          <div v-if="loading">
-            <!-- spinner -->
-          </div>
         </div>
-        <div class="form-group">
+        <div class="form-group position-relative">
+          <div v-if="loading" class="position-absolute top-0 start-0 bg-secondary w-100 h-100 opacity-75 d-flex justify-content-center align-items-center">
+            <div>
+              <div class="spinner-border text-primary"></div>
+              <div>Loading...</div>
+            </div>
+          </div>
           <textarea class="form-control" v-model="outputText" disabled placeholder="Hasil"></textarea>
         </div>
       </div>
